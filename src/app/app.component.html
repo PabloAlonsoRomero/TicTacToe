@@ -1,0 +1,26 @@
+<div class="container">
+    <h3>Tic tac toe</h3>
+    <h5>Pablo Alonso | 78732</h5>
+    <score *ngIf="mostrarscore"  [score]="this.score"></score>
+    <div class="container-grid">
+        <!--
+            let celda <-- Variable temporal del iterador
+            tablero -> Existe, es el arreglo de todas las celdas
+
+        -->
+        <div 
+        *ngFor="let celda of tablero; let i = index"
+        (click)="seleccionarCelda(i)" 
+        class="cell" 
+        [ngClass]="{
+            'player1': celda === 1,
+            'player2': celda === 2,
+            'placed': celda !== 0
+        }"
+        ></div>
+
+        <button (click)="nuevoJuego()">Reiniciar</button>
+        <button (click)="mostrarMensaje()">Mostrar mensaje</button>
+        <button (click)="cambiarEstadoScore()"> {{ mostrarscore ? 'Ocultar Score' : 'Mostrar Score' }} </button>
+    </div>
+</div>
